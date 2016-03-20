@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @access public
+ * @author Edward Rodríguez
+ * @category Database
+ * @copyright Software Libre
+ * @example Database/Database.php Administra la base de datos
+ * @global Clase para la gestión de la base de datos
+ * @package Database
+ * @subpackage PDO
+ * @since 13/10/2015
+ * @version v.1.0
+ */
+class Database extends PDO
+{
+
+	/**
+	 * Description
+	 * @access public
+	 * @return none No devuelve nada
+	 */
+	public function __construct(){
+	
+		parent::__construct(
+		
+			'mysql:host='.DB_HOST.';'.
+			
+			'dbname='.DB_NAME,
+			
+			DB_USER,
+			
+			DB_PASS,
+			
+			array(
+			
+			PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES '.DB_CHAR
+			
+			)
+			
+		);
+	
+	}
+
+}

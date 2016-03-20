@@ -1,0 +1,17 @@
+<h2>Agregar usuarios</h2>
+
+<form method="post" action="<?php echo APP_URL."usuarios/add"; ?>">
+
+	<input type="hidden" name="add">
+    
+    <p>Correo:<input type="email" name="email"></p>
+    
+    <p>Usuario:<input type="text" name="username"></p>
+    
+    <p>Contrasena:<input type="password" name="password"></p>
+    
+    <p>Status:<input type="number" name="status"></p>
+    
+    <p><input type="submit" value="Enviar"></p>
+    
+</form>

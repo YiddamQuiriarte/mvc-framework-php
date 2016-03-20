@@ -1,0 +1,26 @@
+<h2>Agregar tarea</h2>
+
+<form action="<?php echo APP_URL."tareas/add"; ?>" method="post">
+
+	<p>Nombre: <input type="text" name="nombre"></p>
+    
+    <!--<p>Categoria: <input type="text" name="categoria_id"></p>-->
+    
+    <p>Categoria:
+    <select name="categoria_id">
+        <option value="">Selecciona</option>
+        <?php foreach ($this->categorias as $categoria): ?>
+        <option value="<?php echo $categoria["id"]; ?>"><?php echo $categoria["nombre"]; ?></option>
+        <?php endforeach; ?>
+    </select>
+    </p>
+    
+    <p>Fecha: <input type="date" name="fecha"></p>
+    
+    <p>Prioridad: <input type="text" name="prioridad"></p>
+    
+    <p>Status: <input type="text" name="status"></p>
+    
+    <p><input type="submit"></p>
+    
+</form>

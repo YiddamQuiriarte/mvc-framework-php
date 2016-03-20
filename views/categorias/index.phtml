@@ -1,0 +1,39 @@
+<h2>Lista de categorias</h2>
+
+<a href="<?php echo APP_URL."categorias/add"; ?>">Agregar categoria</a>
+
+<table width="200" border="1">
+
+  <tbody>
+  
+    <tr>
+    
+      <th>Id</th>
+      
+      <th>Nombre</th>
+      
+    </tr>
+    
+    <?php foreach($this->categorias as $categoria): ?>
+    
+    <tr>
+    
+      <td><?php echo $categoria["id"]; ?></td>
+      
+      <td><?php echo $categoria["nombre"]; ?></td>
+      
+      <td>
+      
+          <a href="<?php echo APP_URL."categorias/edit/".$categoria['id']; ?>">Editar</a> |
+           
+          <a href="<?php echo APP_URL."categorias/delete/".$categoria['id']; ?>">Eliminar</a>
+      
+      </td>
+      
+    </tr>
+    
+    <?php endforeach; ?>
+    
+  </tbody>
+  
+</table>

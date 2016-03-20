@@ -1,0 +1,13 @@
+<h2>Editar categoria</h2>
+
+<form method="post" action="<?php echo APP_URL."categorias/edit"; ?>">
+
+	<input type="hidden" name="id" value="<?php echo $this->categoria['id']; ?>">
+    
+    <input type="hidden" name="edit">
+    
+    <p>Nombre:<input type="text" name="nombre" value="<?php echo $this->categoria['nombre']; ?>"></p>
+    
+    <p><input type="submit" value="Enviar"></p>
+    
+</form>

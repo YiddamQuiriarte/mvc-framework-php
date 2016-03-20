@@ -1,0 +1,124 @@
+<?php
+
+/**
+ * @author Edward Rodríguez
+ * @category Controlador
+ * @copyright Software Libre
+ * @example controller/tareasController.php Controlador de tareas
+ * @global Clase controladora para la ejecución de tareas
+ * @package tareasController
+ * @subpackage AppController
+ * @since 13/10/2015
+ * @version v.1.0
+ */
+class tareasController extends AppController 
+{
+
+	/**
+	 * Constructor de la clase tareasController
+	 * @return none No devuelve nada
+	 */
+	public function __construct()
+	{
+	
+		parent::__construct();
+	
+	}
+	
+	/**
+	 * Método inicial de la clase tareasController
+	 * @return none No devuelve nada
+	 */
+	public function index()
+	{
+
+		//echo "Hola desde el otro lado del mundo";
+
+/*		$tareas = $this->loadModel("tareas");
+		
+		$this->_view->tareas = $tareas->getTareas();
+		
+		$this->_view->titulo = "Página principal";
+		
+		$this->_view->renderizar("index");*/
+		
+		$this->_view->titulo = "Página principal";
+		
+		$options = array(
+		
+			'fields' => 'tareas.id, tareas.nombre, categorias.nombre AS categoria, fecha, prioridad, status',
+			
+			'join' => 'categorias',
+			
+			'on' => 'categorias.id = categoria_id'
+		
+		);
+		
+		$this->_view->tareas = $this->db->find('tareas', 'join', $options);
+		
+		$this->_view->renderizar("index");
+	
+	}
+	/**
+	 * Método inicial de la clase tareasController
+	 * @return none No devuelve nada
+	 */
+	public function add()
+	{
+		$this->_view->categorias = $this->db->find('categorias', 'all', null);
+		if($_POST)
+		{
+			if($this->db->save('tareas', $_POST))
+			{
+				$this->redirect(array('controller' => 'tareas'));
+			}
+			else
+			{
+				$this->redirect(array('controller' => 'tareas', 'action' => 'add'));
+			}
+		}
+		else
+		{
+			$this->_view->titulo = "Agregar tarea";
+			$this->_view->renderizar('add');
+		}
+	}
+	/**
+	 * Método inicial de la clase tareasController
+	 * @return none No devuelve nada
+	 */
+	public function edit($id = null)
+	{
+		$this->_view->categorias = $this->db->find('categorias', 'all', null);
+		if($_POST)
+		{
+			if($this->db->update('tareas', $_POST))
+			{
+				$this->redirect(array('controller' => 'tareas', 'action' => 'index'));
+			}
+			else
+			{
+				$this->redirect(array('controller' => 'tareas', 'action' => 'edit/'.$_POST['id']));
+			}
+		}
+		else
+		{
+			$this->_view->titulo = "Editar tarea";
+			$this->_view->tarea = $this->db->find('tareas', 'first', array('conditions' => 'id='.$id));
+			$this->_view->renderizar('edit');
+		}
+	}
+	/**
+	 * Método inicial de la clase tareasController
+	 * @return none No devuelve nada
+	 */
+	public function delete($id = null)
+	{
+		$condition = 'id='.$id;
+		if($this->db->delete('tareas', $condition))
+		{
+			$this->redirect(array('controller' => 'tareas', 'action' => 'index'));
+		}
+	}
+
+}

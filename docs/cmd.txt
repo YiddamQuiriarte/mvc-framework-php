@@ -1,0 +1,8 @@
+cd xampp/php
+pear
+phpdoc -d C:\xampp\htdocs\website\framework -t C:\xampp\htdocs\website\framework\docs\
+
+
+Extra
+-----------------------
+// phpdoc -f C:\xampp\htdocs\website\php-documentor\test.php -t C:\xampp\htdocs\website\php-documentor\docs\    -----> direccion

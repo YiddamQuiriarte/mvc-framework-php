@@ -1,0 +1,19 @@
+<h2>Editar usuarios</h2>
+
+<form method="post" action="<?php echo APP_URL."usuarios/edit"; ?>">
+
+	<input type="hidden" name="id" value="<?php echo $this->usuario['id']; ?>">
+    
+    <input type="hidden" name="edit">
+    
+    <p>Correo:<input type="email" name="email" value="<?php echo $this->usuario['email']; ?>"></p>
+    
+    <p>Usuario:<input type="text" name="username" value="<?php echo $this->usuario['username']; ?>"></p>
+    
+    <p>Contrasena:<input type="password" name="pass" value="<?php //echo $this->usuario['password']; ?>"></p>
+    
+    <p>Status:<input type="number" name="status" value="<?php echo $this->usuario['status']; ?>"></p>
+    
+    <p><input type="submit" value="Enviar"></p>
+    
+</form>

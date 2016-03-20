@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @author Edward Rodríguez
+ * @category Modelo
+ * @copyright Software Libre
+ * @example models/tareasModel.php Modelo de tareas
+ * @global Clase modelo para la ejecución de tareas
+ * @package tareasModel
+ * @subpackage AppModel
+ * @since 13/10/2015
+ * @version v.1.0
+ */
+class tareasModel extends AppModel
+{
+
+	/**
+	 * Constructor de la clase tareasModel
+	 * @return none No devuelve nada
+	 */
+	public function __construct()
+	{
+	
+		parent::__construct();
+	
+	}
+
+	/**
+	 * Obtiene todas las tareas
+	 * @return string Devuelve una lista de tareas
+	 */
+	public function getTareas()
+	{
+	
+		$tareas = $this->_db->query("SELECT * FROM tareas");
+
+		return $tareas->fetchall();
+	
+	}
+
+}

@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @access public
+ * @author Edward Rodríguez
+ * @category Model
+ * @copyright Software Libre
+ * @example aplication/Model.php Administra los datos del sistema
+ * @global Clase administradora de de datos
+ * @package AppModel
+ * @since 13/10/2015
+ * @version v.1.0
+ */
+class AppModel
+{
+
+	/**
+	 * @access protected
+	 * @var string Nombre de la base de datos
+	 */
+	protected $_db;
+	
+
+	/**
+	 * @access public
+	 * @return Database Devuelve la instancia de la variable $_db
+	 */
+	public function __construct(){
+	
+		$this->_db = new Database();
+	
+	}
+
+}
